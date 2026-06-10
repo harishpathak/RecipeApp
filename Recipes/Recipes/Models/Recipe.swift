@@ -10,9 +10,11 @@ import Foundation
 struct Recipe: Identifiable {
     let id: String
     let name: String
-    let area: String?
-    let imageUrl: URL?
-    
+    var area: String? = nil
+    var imageUrl: URL? = nil
+}
+
+extension Recipe {
     init(dto: RecipeDTO) {
         id = dto.idMeal
         name = dto.strMeal
@@ -28,7 +30,7 @@ struct RecipesDTO: Decodable {
 struct RecipeDTO: Decodable {
     let strMeal: String
     let strMealThumb: String
-    let strArea: String
-    let strCountry: String
+    let strArea: String?
+    let strCountry: String?
     let idMeal: String
 }

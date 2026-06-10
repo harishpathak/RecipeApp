@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct RecipeDetailsView: View {
-   @State private var viewModel: RecipeDetailsViewModel
+    private let viewModel: RecipeDetailsViewModel
     
     init(service: RecipesServiceProtocol, id: String) {
-        _viewModel = State(initialValue: RecipeDetailsViewModel(service: service, id: id))
+        viewModel = RecipeDetailsViewModel(service: service, id: id)
     }
     
     var body: some View {

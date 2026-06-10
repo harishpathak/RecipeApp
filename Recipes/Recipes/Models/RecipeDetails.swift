@@ -50,7 +50,9 @@ struct RecipeDetails: Identifiable {
     let category: String
     let imageUrl: URL?
     let instructions: String?
-    
+}
+
+extension RecipeDetails {
     init(dto: RecipeDetailDTO) {
         id = dto.idMeal
         name = dto.strMeal

@@ -21,7 +21,7 @@ class RecipeListViewModel {
         self.service = service
     }
     
-    var viewState: RecipeListState = .loading
+    var viewState: RecipeListState = .success
     var recipes: [Recipe] = []
     var categories: [CategoryDisplayModel] = []
     var selectedCategory: String = ""

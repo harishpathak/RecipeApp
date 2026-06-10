@@ -24,7 +24,8 @@ struct CategoryDisplayModel: Identifiable {
     let name: String         // Maps from strCategory
     let imageUrl: URL?       // Converted to a URL object
     let description: String  // Maps from strCategoryDescription
-    
+}
+extension CategoryDisplayModel {
     // Custom initializer to map from the DTO
     init(from dto: CategoryDTO) {
         self.id = dto.idCategory
