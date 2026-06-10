@@ -30,12 +30,12 @@ struct RecipeListView: View {
                             LazyHStack {
                                 ForEach(viewModel.categories) { category in
                                     RecipeCategoryCardView(category: category, selectedCategoryName: viewModel.selectedCategory)
-                                    .padding(.horizontal, 10)
-                                    .onTapGesture {
-                                        Task {
-                                            await viewModel.selectCategory(category: category.name)
+                                        .padding(.horizontal, 10)
+                                        .onTapGesture {
+                                            Task {
+                                                await viewModel.selectCategory(category: category.name)
+                                            }
                                         }
-                                    }
                                 }
                             }
                             .frame(height: 100)
@@ -45,12 +45,18 @@ struct RecipeListView: View {
                             Text("No recipes for selected category")
                             Spacer()
                         } else {
-                            List(viewModel.recipes) { recipe in
-                                NavigationLink {
-                                    RecipeDetailsView(service: viewModel.service, id: recipe.id)
-                                } label: {
-                                    Text(recipe.name)
+                            ScrollView(.vertical) {
+                                LazyVStack(alignment: .leading) {
+                                    ForEach(viewModel.recipes) { recipe in
+                                        NavigationLink {
+                                            RecipeDetailsView(service: viewModel.service, id: recipe.id)
+                                        } label: {
+                                            RecipeRowView(recipe: recipe)
+                                        }
+                                        .tint(.primary)
+                                    }
                                 }
+                                .padding(.top, 20)
                             }
                         }
                     }
